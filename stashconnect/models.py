@@ -50,7 +50,7 @@ class Message:
 
     def _decrypt_location(self, location):
 
-        if location["encrypted"]:
+        if location.get("encrypted"):
 
             if self.client._private_key is None:
                 print(

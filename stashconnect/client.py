@@ -29,7 +29,6 @@ headers = {
     "Referer": "https://app.schul.cloud/",
 }
 
-
 class Client:
     """## Represents a client connection to Stashcat API.
 
