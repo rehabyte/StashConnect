@@ -178,3 +178,17 @@ class ConversationManager:
             "message/conversation", data={"conversation_id": conversation_id}
         )
         return Conversation(self.client, response["conversation"])
+
+    def get_by_name(self, name: str) -> Conversation:
+        """## Fetches a conversation by name.
+
+        #### Args:
+            name (str): The name of the conversations partner.
+
+        #### Returns:
+            Conversation: A conversation object.
+        """
+        response = self.client._post(
+            "search/conversations", data={"searchtag": name}
+        )
+        return Conversation(self.client, response["conversations"][0])
