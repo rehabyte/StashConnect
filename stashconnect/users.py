@@ -43,3 +43,17 @@ class UserManager:
         """
         response = self.client._post("users/me", data={})
         return User(self.client, response["user"])
+
+    def get_by_name(self, name: str) -> User:
+            """## Fetches a user by name.
+    
+            #### Args:
+                name (str): The name of the user.
+    
+            #### Returns:
+                User: A User object.
+            """
+            response = self.client._post(
+                "users/listing", data={"search": name}
+            )
+            return User(self.client, response["users"][0])

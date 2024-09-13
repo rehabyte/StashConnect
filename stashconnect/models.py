@@ -282,7 +282,9 @@ class Company:
         self.id = data["id"]
 
         self.name = data["name"]
-        self.manager = User(self.client, data["manager"])
+        # prevents KeyError -> manager
+        if data.get("manager"):
+            self.manager = User(self.client, data["manager"])
 
         self.time_created = data["created"]
         self.time_joined = data["time_joined"]

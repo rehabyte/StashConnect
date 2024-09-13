@@ -538,17 +538,3 @@ class ChannelManager:
             "push/enable_notifications",
             data={"type": "channel", "content_id": channel_id},
         )
-
-    def get_by_name(self, name: str) -> Channel:
-        """## Fetches a channel by name.
-
-        #### Args:
-            name (str): The name of the channel.
-
-        #### Returns:
-            Channel: A channel object.
-        """
-        response = self.client._post(
-            "channels/visible", data={"search": name}
-        )
-        return Channel(self.client, response["channels"][0])
